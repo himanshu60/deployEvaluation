@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Progress Bar</title>
+  <style>
+    /* Styling for progress bar container */
+    .progress-bar {
+      width: 400px;
+      height: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+
+    /* Styling for progress bar fill */
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #4caf50;
+      /* transition: width 0.2s ease-in-out; */
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progressBarFill"></div>
+  </div>
+
+  <script>
+    const progressBarFill = document.getElementById('progressBarFill');
+    let progress = 0;
+
+    function updateProgressBar() {
+      progressBarFill.style.width = `${progress}%`;
+    }
+
+    function simulateProgress() {
+      if (progress < 100) {
+        progress += 10;
+        updateProgressBar();
+      }
+    }
+
+    setInterval(simulateProgress, 1000); // Simulate progress update every 1 second
+  </script>
+</body>
+</html>

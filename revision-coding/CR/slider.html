@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slider</title>
+  <style>
+    /* Styling for slider container and slides */
+    .slider {
+      width: 400px;
+      height: 200px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slides">
+      <div class="slide" style="background-color: #ff7f50;"></div>
+      <div class="slide" style="background-color: #6495ed;"></div>
+      <div class="slide" style="background-color: #dc143c;"></div>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelector('.slides');
+    const slideWidth = slider.clientWidth;
+    let currentIndex = 0;
+
+    function goToSlide(index) {
+      slides.style.transform = `translateX(-${slideWidth * index}px)`;
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      if (currentIndex < slides.children.length - 1) {
+        goToSlide(currentIndex + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+    }
+
+    setInterval(nextSlide, 2000); // Automatically slide to the next slide every 2 seconds
+  </script>
+</body>
+</html>

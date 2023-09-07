@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="enter data">
+    <ul id="output"></ul>
+</body>
+</html>
+<script>
+    const search=document.getElementById("search");
+    const output=document.getElementById("output")
+    search.addEventListener("input",handle)
+    let timer;
+    function handle(){
+        clearTimeout(timer)
+        timer=setTimeout(()=>{
+        // console.log(search.value)
+        show()
+        },700)
+    }
+    function show(){
+        let res=search.value;
+        output.innerHTML='';
+        
+            const li=document.createElement('li')
+            li.textContent=res;
+            output.appendChild(li)
+        
+    }
+
+    // function show(){
+    //     let res=search.value;
+    //     output.innerHTML='';
+    //     let fruit=['banana','mango','orange','pineapple','apple'];
+    //     const filterData=fruit.filter(data=>
+    //       data.toLowerCase().includes(res.toLowerCase()))
+    //     filterData.forEach(data=>{
+    //         const li=document.createElement("li");
+    //         li.textContent=data;
+    //         output.appendChild(li)
+    //     })
+
+    // }
+</script>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>debouncing</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="ener data">
+
+</body>
+</html>
+<script>
+    const search=document.getElementById("search");
+    let timer;
+    search.addEventListener("input",handle)
+
+    function handle(){
+        clearTimeout(timer)
+       timer=setTimeout(()=>{
+        console.log(search.value)
+       },2000) 
+    }
+</script> -->

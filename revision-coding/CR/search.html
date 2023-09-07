@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debouncing Search</title>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search...">
+  <ul id="searchResults"></ul>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    let timeoutId;
+
+    searchInput.addEventListener('input', function() {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function() {
+        search();
+      }, 300);
+    });
+
+    function search() {
+      const searchTerm = searchInput.value;
+
+      // Perform your search operation using the searchTerm
+      // In this example, we populate the searchResults list with dummy data
+      const results = [
+        'Apple',
+        'Banana',
+        'Cherry',
+        'Durian',
+        'Elderberry',
+        'Fig',
+        'Grape',
+        'Honeydew',
+        'Jackfruit',
+        'Kiwi'
+      ];
+
+      // Clear previous results
+      searchResults.innerHTML = '';
+
+      // Filter and display the results
+      const filteredResults = results.filter(result => result.toLowerCase().includes(searchTerm.toLowerCase()));
+      filteredResults.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result;
+        searchResults.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
